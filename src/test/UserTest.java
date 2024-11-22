@@ -9,7 +9,6 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class UserTest {
-
     @Test
     void testBorrowBook() {
         User user = new User("Ahmet", 1);
