@@ -1,0 +1,12 @@
+assertTrue Temel Kullanımı:
+assertTrue(boolean condition);
+condition: Doğru (true) olması beklenen bir mantıksal ifade.
+Eğer bu ifade doğruysa (true), test başarılı olur.
+Eğer bu ifade yanlışsa (false), test başarısız olur.
+
+
+assertFalse Temel Kullanımı:
+assertFalse(boolean condition);
+condition: Yanlış (false) olması beklenen bir mantıksal ifade.
+Eğer bu ifade yanlışsa (false), test başarılı olur.
+Eğer bu ifade doğruysa (true), test başarısız olur.

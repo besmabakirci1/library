@@ -24,4 +24,34 @@ public class LibraryBookMemberLists {
             System.out.println("-" + book.getTitle() + " (" + (book.isAvailable() ? "Available" : "On loan") + ")");
         }
     }
+    public void searchBook(String title) {
+        for (Book book : books) {
+            if (book.getTitle().equalsIgnoreCase(title)) { // Kitap adı eşleşiyor mu?
+                System.out.println("The book has found: " + book.getTitle());
+
+                if (book.isAvailable()) { // Kitap mevcut mu?
+                    System.out.println("Durum: Mevcut");
+                } else {
+                    System.out.println("Durum: Ödünçte");
+                    for (User user : users) {
+                        if (user.getBorrowedBooks().contains(book)) { // Kitap kimde?
+                            System.out.println("Bu kitap şu anda " + user.getName() + " tarafından ödünç alınmış.");
+                            return;
+                        }
+                    }
+                }
+                return; // Kitap bulundu, işlemi sonlandır
+            }
+        System.out.println("Kitap bulunamadı."); // Hiçbir kitap eşleşmedi
+         }
+    }
+    public void removeBook(String title) {
+        books.removeIf(book -> book.getTitle().equalsIgnoreCase(title));
+        System.out.println(title + " has been removed from the library.");
+    }
+
+    public void removeUser(String name) {
+        users.removeIf(user -> user.getName().equalsIgnoreCase(name));
+        System.out.println(name + " has been removed from the library.");
+    }
 }

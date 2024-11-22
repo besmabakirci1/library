@@ -1,46 +1,78 @@
 package main;
+
 import java.util.ArrayList;
 import java.util.List;
-// user_name , ID , and books that has borrowed by him / her.
+
 public class User {
-    private String name ;
+    private String name;
     private int userId;
     private List<Book> borrowedBooks;
-    public User(String name, int userId){
+    private int maxBorrowLimit = 5; // Varsayılan ödünç alma sınırı
+
+    public User(String name, int userId) {
         this.name = name;
         this.userId = userId;
         this.borrowedBooks = new ArrayList<>();
     }
-    public String getName(){
+
+    // Getters ve Setters
+    public String getName() {
         return name;
     }
-    public int getUserId(){
+
+    public int getUserId() {
         return userId;
     }
-    public void borrowBooks(Book book){
-        if(book.isAvailable()){
-            book.borrowBook();
-            borrowedBooks.add(book);
-        }else {
-            System.out.println(book.getTitle() + "currently unavailable for loan.");
-        }
-    }
-    public void returnBook(Book book){
-        if(borrowedBooks.contains(book)){
-            book.returnBook();
-            borrowedBooks.remove(book);
-        }else {
-            System.out.println(book.getTitle() + "has not been borrowed by this user." );
-        }
-    }
-    public void listedBorrowedBooks(){
-        System.out.println(" books borrowed by "+ name );
-        for (Book book: borrowedBooks){
-            System.out.println("- " + book.getTitle());
-        }
-    }
-    public List<Book> getBorrowedBooks(){
+
+    public List<Book> getBorrowedBooks() {
         return borrowedBooks;
     }
 
+    public int getMaxBorrowLimit() {
+        return maxBorrowLimit;
+    }
+
+    public void setMaxBorrowLimit(int maxBorrowLimit) {
+        this.maxBorrowLimit = maxBorrowLimit;
+    }
+
+    // Kitap Ödünç Alma
+    public void borrowBooks(Book book) {
+        if (borrowedBooks.size() >= maxBorrowLimit) {
+            System.out.println("You have reached the maximum borrow limit.");
+            return;
+        }
+
+        if (borrowedBooks.contains(book)) {
+            System.out.println("You have already borrowed this book: " + book.getTitle());
+            return;
+        }
+
+        if (book.isAvailable()) {
+            book.borrowBook(this.name);
+            borrowedBooks.add(book);
+            System.out.println(name + " borrowed the book: " + book.getTitle());
+        } else {
+            System.out.println(book.getTitle() + " is currently unavailable for loan.");
+        }
+    }
+
+    // Kitap İade Etme
+    public void returnBook(Book book) {
+        if (borrowedBooks.contains(book)) {
+            book.returnBook(this.name);
+            borrowedBooks.remove(book);
+            System.out.println(this.name + " returned the book: " + book.getTitle());
+        } else {
+            System.out.println(book.getTitle() + " has not been borrowed by " + this.name + ".");
+        }
+    }
+
+    // Ödünç Alınan Kitapları Listeleme
+    public void listedBorrowedBooks() {
+        System.out.println("Books borrowed by " + name + ":");
+        for (Book book : borrowedBooks) {
+            System.out.println("- " + book.getTitle());
+        }
+    }
 }
