@@ -6,7 +6,6 @@ public class Main {
     public static void main(String[] args) {
         LibraryBookMemberLists library = new LibraryBookMemberLists();
         Scanner scanner = new Scanner(System.in);
-
         // Örnek veriler
         library.addBook(new Book("Suç ve Ceza", "Fyodor Dostoyevski", "123456"));
         library.addBook(new Book("Karamazov Kardeşler", "Fyodor Dostoyevski", "789101"));
