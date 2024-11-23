@@ -65,4 +65,11 @@ public class Book {
     public int getBorrowCount() {
         return borrowCount;
     }
+
+    public String getAuthor() {
+        return author;
+    }
+    public String getIsbn(){
+        return isbn;
+    }
 }
