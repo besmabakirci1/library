@@ -1,4 +1,4 @@
-📚 Library Management System
+## 📚 Library Management System
 
 Welcome to the Library Management System - a powerful yet easy-to-use tool for managing your library's books and members! Designed to make the management of a small library effortless, this system allows you to efficiently add, remove, search, and list books and users. Whether you're a beginner learning Java or someone who wants a simple library solution, this project has got you covered.
 
