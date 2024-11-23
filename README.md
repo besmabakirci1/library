@@ -83,13 +83,5 @@ To contribute:
 4. **Push** to the branch (`git push origin feature-branch`).
 5. **Open** a Pull Request.
 
-## 📜 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-Thank you for checking out the **Library Management System**! If you find it useful, please give the repository a star! ⭐
-
 Happy coding and may your libraries always be organized and efficient! 📚✨
 
